@@ -22,7 +22,6 @@ add_library(common SHARED
   env_posix.cc
   server_monitor.cc
   zk_server_monitor.cc
-  zk_server_register.cc
   net_util.cc
   hash.cc)
 target_link_libraries(common server_meta)

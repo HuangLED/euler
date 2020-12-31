@@ -23,7 +23,6 @@ add_library(euler_core SHARED
   euler/parser/lex.yy.c
   euler/parser/gremlin.tab.c
 
-  euler/common/zk_server_register.cc
   euler/common/logging.cc
   euler/common/file_io.cc
   euler/common/timmer.cc
