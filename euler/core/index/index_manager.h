@@ -22,14 +22,14 @@ limitations under the License.
 #include <vector>
 
 #include "euler/core/index/index_meta.h"
-#include "euler/core/index/hash_sample_index.h"
-#include "euler/core/index/range_sample_index.h"
-#include "euler/core/index/hash_range_sample_index.h"
+#include "euler/core/index/index_result.h"
 #include "euler/common/file_io.h"
 #include "euler/common/slice.h"
 #include "euler/common/server_monitor.h"
 
 namespace euler {
+
+class SampleIndex;
 
 class IndexManager {
  public:
@@ -39,11 +39,22 @@ class IndexManager {
 
   bool DeserializeMeta(FileIO* file_io, const std::string& index_name);
 
-  Status Deserialize(Slice path);
+  Status Deserialize(Slice path) {
+    path.size();  // To mute warning.
+    // BYTE_ARIS_MARK
+    return Status::OK();
+  }
 
-  std::vector<Meta> GetIndexInfo();
+  std::vector<Meta> GetIndexInfo() {
+    // BYTE_ARIS_MARK
+    return std::vector<Meta>();
+  }
 
-  std::shared_ptr<SampleIndex> GetIndex(const std::string& key) const;
+  std::shared_ptr<SampleIndex> GetIndex(const std::string& key) const {
+    key.size();  // To mute warning.
+    // BYTE_ARIS_MARK
+    return std::shared_ptr<SampleIndex>();
+  }
 
   std::vector<std::string> GetKeys() const;
 
@@ -65,6 +76,7 @@ class IndexManager {
   }
 
  private:
+  /*
   template<typename IdType>
   std::shared_ptr<SampleIndex>
        GetHashIndex(const std::string& key, IndexDataType valueType) const;
@@ -79,6 +91,7 @@ class IndexManager {
 
   std::shared_ptr<SampleIndex> GetIndexByType(const std::string& key,
       IndexType t, IndexDataType idType, IndexDataType valueType) const;
+  */
 
  private:
   int shard_index_;
@@ -88,6 +101,7 @@ class IndexManager {
   std::unordered_map<std::string, std::shared_ptr<SampleIndex> > index_;
 };
 
+/*
 template<typename IdType>
 std::shared_ptr<SampleIndex>
 IndexManager::GetHashIndex(const std::string& key,
@@ -159,6 +173,7 @@ IndexManager::GetHashRangeIndex(const std::string& key,
   }
   return std::shared_ptr<SampleIndex>(h);
 }
+*/
 
 }  // namespace euler
 

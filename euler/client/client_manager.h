@@ -71,7 +71,7 @@ class ClientManager {
     std::string zk_server, zk_path;
     config.Get("zk_server", &zk_server);
     config.Get("zk_path", &zk_path);
-    /* Huang
+    /* BYTE_ARIS_MARK
     server_monitor_ = GetServerMonitor(zk_server, zk_path);
     */
     int32_t shard_number = 0;

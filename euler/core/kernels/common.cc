@@ -80,6 +80,7 @@ std::shared_ptr<IndexResult> QueryIndex(
   IndexManager& index_manager = IndexManager::Instance();
   std::shared_ptr<IndexResult> result(nullptr);
 
+  /* BYTE_ARIS_MARK
   for (const auto& dnf : node_def.dnf()) {
     auto tokens = Split(dnf, ",");
     std::shared_ptr<IndexResult> row_result(nullptr);
@@ -111,7 +112,7 @@ std::shared_ptr<IndexResult> QueryIndex(
     } else {
       result->Union(row_result);
     }
-  }
+  } */
   return result;
 }
 
@@ -121,6 +122,8 @@ std::vector<std::shared_ptr<IndexResult>> QueryIndex(
   std::vector<std::shared_ptr<IndexResult>> results;
   results.reserve(value.size());
   IndexManager& index_manager = IndexManager::Instance();
+
+  /* BYTE_ARIS_MARK
   auto index = index_manager.GetIndex(index_name);
   if (index == nullptr) {
     EULER_LOG(FATAL) << "no such index: " << index_name;
@@ -128,14 +131,18 @@ std::vector<std::shared_ptr<IndexResult>> QueryIndex(
   for (const std::string& v : value) {
     results.push_back(index->Search("eq", v));
   }
+  */
   return results;
 }
+
 
 std::vector<std::shared_ptr<IndexResult>> QueryNeighborIndex(
     const DAGNodeProto& node_def, const NodeIdVec& root_ids,
     OpKernelContext* ctx) {
   IndexManager& index_manager = IndexManager::Instance();
   std::vector<std::shared_ptr<IndexResult>> results(root_ids.size());
+
+  /* BYTE_ARIS_MARK
   for (size_t i = 0; i < root_ids.size(); ++i) {
     std::shared_ptr<IndexResult> result(nullptr);
     for (const auto& dnf : node_def.dnf()) {
@@ -171,6 +178,7 @@ std::vector<std::shared_ptr<IndexResult>> QueryNeighborIndex(
     }
     results[i] = result;
   }
+  */
   return results;
 }
 

@@ -173,6 +173,7 @@ bool QueryProxy::Init(const GraphConfig& config) {
       return false;
     }
 
+    /* BYTE_ARIS_MARK
     auto& index_manager = IndexManager::Instance();
     if (!data_dir->ListDirectory([](const std::string &filename) {
           return filename == "Index";
@@ -187,6 +188,7 @@ bool QueryProxy::Init(const GraphConfig& config) {
     Compiler::Init(shard_num, local, index_info);
     meta = &Graph::Instance().graph_meta();
     graph_label = graph.GetGraphLabel();
+    */
   }
 
   static QueryProxy* temp = new QueryProxy(shard_num);

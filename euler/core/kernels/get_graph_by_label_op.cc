@@ -43,6 +43,11 @@ void GetGraphByLabelOp::Compute(
   for (int32_t i = 0; i < labels_t->NumElements(); ++i) {
     labels.push_back(*(labels_t->Raw<std::string*>()[i]));
   }
+
+  std::vector<std::shared_ptr<IndexResult>> results;
+  size_t total_size = 0;
+  std::vector<std::vector<uint64_t>> node_id_results;
+  /*  BYTE_ARIS_MARK
   std::vector<std::shared_ptr<IndexResult>> results =
       QueryIndex("graph_label", labels);
 
@@ -56,7 +61,7 @@ void GetGraphByLabelOp::Compute(
     } else {
       node_id_results.push_back({});
     }
-  }
+  } */
 
   std::string index_name = OutputName(node_def, 0);
   std::string data_name = OutputName(node_def, 1);

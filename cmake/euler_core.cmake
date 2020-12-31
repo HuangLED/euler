@@ -48,8 +48,8 @@ add_library(euler_core SHARED
   euler/parser/attribute_calculator.cc
   euler/parser/optimize_type.cc
   euler/core/index/index_manager.cc
-  euler/core/index/common_index_result.cc
-  euler/core/index/index_meta.cc
+  #euler/core/index/common_index_result.cc
+  #euler/core/index/index_meta.cc
   euler/core/graph/graph_builder.cc
   euler/core/graph/edge.cc
   euler/core/graph/graph.cc

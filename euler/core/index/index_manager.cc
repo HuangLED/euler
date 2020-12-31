@@ -24,6 +24,7 @@ limitations under the License.
 
 namespace euler {
 
+/*
 bool IndexManager::DeserializeMeta(FileIO* file_io,
                                    const std::string& name) {
   IndexMetaRecord record;
@@ -200,5 +201,6 @@ IndexManager::GetIndexByType(const std::string& key, IndexType t,
   }
   return nullptr;
 }
+*/
 
 }  // namespace euler
