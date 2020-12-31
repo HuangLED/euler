@@ -13,7 +13,7 @@ cd $(dirname ${BASH_SOURCE[0]})
 set -e
 
 # build zookeeper
-(cd third_party/zookeeper; ant compile_jute)
+#(cd third_party/zookeeper; ant compile_jute)
 
 rm -fr build && mkdir build
 (cd build && cmake ${CMAKE_FLAGS} .. && make -j32)

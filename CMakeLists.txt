@@ -34,7 +34,6 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 # Add external module
 include(grpc)
 include(googletest)
-include(zookeeper)
 include(utils)
 include(linenoise)
 
@@ -55,8 +54,7 @@ include_directories(${GTEST_INCLUDE_DIRS}
 
 include_directories(SYSTEM
                     ${PROTOBUF_INCLUDE_DIRS}
-                    ${GRPC_INCLUDE_DIRS}
-                    ${ZOOKEEPER_INCLUDE_DIRS})
+                    ${GRPC_INCLUDE_DIRS})
 
 add_subdirectory(tf_euler)
 add_subdirectory(euler)

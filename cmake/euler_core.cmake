@@ -132,7 +132,6 @@ add_library(euler_core SHARED
 
 target_link_libraries(euler_core
   libprotobuf
-  zookeeper
   grpc++_unsecure
   jemalloc_STATIC_PIC
   ${CMAKE_THREAD_LIBS_INIT})
