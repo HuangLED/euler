@@ -25,7 +25,7 @@ add_library(common SHARED
   zk_server_register.cc
   net_util.cc
   hash.cc)
-target_link_libraries(common server_meta zookeeper)
+target_link_libraries(common server_meta)
 
 add_executable(local_file_io_test local_file_io_test.cc)
 target_link_libraries(local_file_io_test ${CMAKE_THREAD_LIBS_INIT} common gtest gtest_main)

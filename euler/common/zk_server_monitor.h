@@ -21,6 +21,6 @@ limitations under the License.
 #include <memory>
 
 #include "euler/common/server_monitor.h"
-#include "euler/common/zk_util_cache.h"
+#include "euler/common/server_register.h"
 
 #endif  // EULER_COMMON_ZK_SERVER_MONITOR_H_
