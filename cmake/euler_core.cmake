@@ -128,7 +128,8 @@ add_library(euler_core SHARED
   euler/service/grpc_worker.cc
   euler/service/server_interface.cc
   euler/service/python_api.cc
-  euler/util/python_api.cc)
+  #euler/util/python_api.cc
+  )
 
 target_link_libraries(euler_core
   libprotobuf
