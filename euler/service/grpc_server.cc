@@ -177,6 +177,7 @@ Status GrpcServer::LoadGraphAndIndex() {
   for (auto it = index_metas[1].begin(); it != index_metas[1].end(); ++it) {
     graph_metas[1][it->first] = it->second;
   }
+  /* Huang
   auto server_register = GetServerRegister(zk_server_, zk_path_);
   if (server_register == nullptr) {
     EULER_LOG(ERROR) << "Get ServerRegister failed, zk_server:"
@@ -187,7 +188,7 @@ Status GrpcServer::LoadGraphAndIndex() {
   if (!server_register->RegisterShard(
       server_def_.shard_index, host_port_, graph_metas[0], graph_metas[1])) {
     return Status::Internal("Register graph to zk failed");
-  }
+  }*/
   return Status::OK();
 }
 

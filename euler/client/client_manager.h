@@ -71,7 +71,9 @@ class ClientManager {
     std::string zk_server, zk_path;
     config.Get("zk_server", &zk_server);
     config.Get("zk_path", &zk_path);
+    /* Huang
     server_monitor_ = GetServerMonitor(zk_server, zk_path);
+    */
     int32_t shard_number = 0;
     if (!server_monitor_->GetNumShards(&shard_number) || shard_number == 0) {
       EULER_LOG(ERROR) << "Retrieve shard info from server failed!";

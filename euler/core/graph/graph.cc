@@ -138,12 +138,14 @@ std::vector<Meta> Graph::GetRegisterInfo() {
 Status Graph::DeregisterRemote(const std::string& host_port,
                                const std::string& zk_server,
                                const std::string& zk_path) {
+  /* Huang
   auto server_register = GetServerRegister(zk_server, zk_path);
   if (server_register != nullptr) {
     server_register->DeregisterShard(shard_index_, host_port);
   }
 
   EULER_LOG(INFO) << "Deregister shard " << shard_index_ << " successfully!";
+  */
   return Status::OK();
 }
 

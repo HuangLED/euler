@@ -11,10 +11,6 @@ add_library(client SHARED
             query.cc)
 target_link_libraries(client common framework core compiler dag index grpc++_unsecure)
 
-add_executable(rpc_client_end2end_test rpc_client_end2end_test.cc)
-target_link_libraries(rpc_client_end2end_test client client_testing_util gtest gtest_main)
-add_test(NAME rpc_client_end2end_test COMMAND rpc_client_end2end_test)
-
 add_executable(rpc_manager_test rpc_manager_test.cc)
 target_link_libraries(rpc_manager_test client client_testing_util gmock gtest gtest_main)
 add_test(NAME rpc_manager_test COMMAND rpc_manager_test)
