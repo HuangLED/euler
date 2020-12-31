@@ -20,5 +20,4 @@ limitations under the License.
 
 #include "euler/common/logging.h"
 #include "euler/common/str_util.h"
-#include "euler/common/zk_util_cache.h"
 #include "euler/common/server_meta.pb.h"
