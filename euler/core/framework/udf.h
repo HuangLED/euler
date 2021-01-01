@@ -24,7 +24,6 @@ limitations under the License.
 #include "euler/common/signal.h"
 #include "euler/common/status.h"
 #include "euler/common/logging.h"
-#include "euler/core/graph/graph.h"
 #include "euler/core/api/api.h"
 #include "euler/core/framework/dag_node.pb.h"
 #include "euler/core/framework/op_kernel.h"
