@@ -23,6 +23,8 @@ limitations under the License.
 
 #include "tf_euler/utils/euler_query_proxy.h"
 
+#include "euler/common/data_types.h"
+
 namespace tensorflow {
 class SampleNeighbor: public AsyncOpKernel {
  public:

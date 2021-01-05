@@ -29,6 +29,10 @@ limitations under the License.
 #include "euler/client/client_manager.h"
 #include "euler/parser/compiler.h"
 
+// BYTE_ARIS_MARK
+#include "euler/core/graph/graph.h"
+#include "euler/core/graph/graph_builder.h"
+
 namespace euler {
 
 static const char* kRemoteGraphMode = "remote";

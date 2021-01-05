@@ -24,8 +24,8 @@ limitations under the License.
 #include "euler/common/logging.h"
 #include "euler/common/env.h"
 #include "euler/common/str_util.h"
-#include "euler/core/graph/graph.h"
-#include "euler/core/graph/graph_builder.h"
+// #include "euler/core/graph/graph.h"  // BYTE_ARIS_MARK. This dependency should be in CC file only.
+// #include "euler/core/graph/graph_builder.h"
 #include "euler/core/framework/types.h"
 #include "euler/core/graph/graph_meta.h"
 #include "euler/parser/optimize_type.h"

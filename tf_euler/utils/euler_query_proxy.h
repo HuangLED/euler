@@ -21,6 +21,6 @@ limitations under the License.
 #include "euler/core/framework/tensor_shape.h"
 #include "euler/core/framework/tensor.h"
 #include "euler/common/logging.h"
-#include "euler/core/framework/types.h"
+// #include "euler/core/framework/types.h"
 
 #endif  // TF_EULER_UTILS_EULER_QUERY_PROXY_H_
