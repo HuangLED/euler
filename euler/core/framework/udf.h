@@ -13,6 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
+// Comment:
+// This module is required by core/kernals/get_feature_op.cc module.
 
 #ifndef EULER_CORE_FRAMEWORK_UDF_H_
 #define EULER_CORE_FRAMEWORK_UDF_H_

@@ -27,7 +27,7 @@ limitations under the License.
 #include "euler/core/index/index_manager.h"
 #include "euler/client/query.h"
 #include "euler/client/client_manager.h"
-#include "euler/parser/compiler.h"
+// #include "euler/parser/compiler.h"
 
 // BYTE_ARIS_MARK
 #include "euler/core/graph/graph.h"
@@ -35,8 +35,8 @@ limitations under the License.
 
 namespace euler {
 
-static const char* kRemoteGraphMode = "remote";
-static const char* kGraphPartitionMode = "graph_partition";
+// static const char* kRemoteGraphMode = "remote";
+// static const char* kGraphPartitionMode = "graph_partition";
 
 QueryProxy* QueryProxy::instance_ = nullptr;
 
@@ -47,6 +47,7 @@ bool QueryProxy::Init(const GraphConfig& config) {
     return false;
   }
 
+  /* BYTE_ARIS_MARK  No need to do compiler.
   OptimizerType type;
   const GraphMeta* meta = nullptr;
   std::vector<std::vector<float>> shard_node_weight, shard_edge_weight;
@@ -57,11 +58,13 @@ bool QueryProxy::Init(const GraphConfig& config) {
     type = graph_partition;
   } else {
     type = local;
-  }
+  } */
 
   int32_t shard_num = 1;
   std::string index_info;
-  if (type == distribute || type == graph_partition) {
+  // if (type == distribute || type == graph_partition) {
+  if (true) {
+    /*
     ClientManager::Init(config);
     if (!config.Get("shard_num", &shard_num)) {
       EULER_LOG(ERROR) << "no shard_num in graph_config";
@@ -146,6 +149,7 @@ bool QueryProxy::Init(const GraphConfig& config) {
         shard_edge_weight[i][shard_num] = sum_weight;
       }
     }
+    */
   } else {
     // init graph
     std::string data_path = "";
@@ -195,6 +199,7 @@ bool QueryProxy::Init(const GraphConfig& config) {
     */
   }
 
+  /*
   static QueryProxy* temp = new QueryProxy(shard_num);
   instance_ = temp;
   instance_->meta_ = *meta;
@@ -202,15 +207,17 @@ bool QueryProxy::Init(const GraphConfig& config) {
   instance_->shard_node_weight_ = shard_node_weight;
   instance_->graph_label_ = graph_label;
 
+  
   EULER_LOG(INFO) << "QueryProxy load successfully!\n"
                   << "GraphMeta {\n" << meta->ToString() << "}\n";
-
+  */
+  
   return true;
 }
 
 QueryProxy::QueryProxy(int32_t shard_num) {
   shard_num_ = shard_num;
-  compiler_ = Compiler::GetInstance();
+  // compiler_ = Compiler::GetInstance();  // BYTE_ARIS_MARK
   env_ = Env::Default();
   tp_ = env_->StartThreadPool("client_thread_pool", 8);
 }
@@ -218,6 +225,7 @@ QueryProxy::QueryProxy(int32_t shard_num) {
 std::unordered_map<std::string, Tensor*>
 QueryProxy::RunGremlin(Query* query,
                        const std::vector<std::string>& result_name) {
+  /*
   DAG* dag = nullptr;
   if (query->SingleOpQuery()) {
     dag = compiler_->Op2DAG(query->op_name_,
@@ -235,10 +243,12 @@ QueryProxy::RunGremlin(Query* query,
   }
   Executor executor(dag, tp_, query->ctx_.get());
   executor.Run();
-  return query->GetResult(result_name);
+  return query->GetResult(result_name); */
+  return std::unordered_map<std::string, Tensor*>();
 }
 
 void QueryProxy::RunAsyncGremlin(Query* query, DoneCallback callback) {
+  /*
   DAG* dag = nullptr;
   if (query->SingleOpQuery()) {
     dag = compiler_->Op2DAG(query->op_name_,
@@ -258,7 +268,7 @@ void QueryProxy::RunAsyncGremlin(Query* query, DoneCallback callback) {
       [executor, callback](){
         callback();
         delete executor;
-      });
+      }); */
 }
 
 }  // namespace euler

@@ -28,7 +28,7 @@ limitations under the License.
 // #include "euler/core/graph/graph_builder.h"
 #include "euler/core/framework/types.h"
 #include "euler/core/graph/graph_meta.h"
-#include "euler/parser/optimize_type.h"
+// #include "euler/parser/optimize_type.h"
 
 namespace euler {
 
@@ -78,7 +78,7 @@ class QueryProxy {
 
  private:
   int32_t shard_num_;
-  Compiler* compiler_;
+  // Compiler* compiler_;   // BYTE_ARIS_MARK. Remove to make build work. 
   Env* env_;
   ThreadPool* tp_;
   GraphMeta meta_;

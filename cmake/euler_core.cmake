@@ -9,7 +9,7 @@ protobuf_generate_cpp(
   euler/core/framework/types.proto
   euler/proto/worker.proto)
 
-SET_SOURCE_FILES_PROPERTIES(euler/parser/lex.yy.c euler/parser/gremlin.tab.c PROPERTIES LANGUAGE CXX)
+# SET_SOURCE_FILES_PROPERTIES(euler/parser/lex.yy.c euler/parser/gremlin.tab.c PROPERTIES LANGUAGE CXX)
 
 add_library(euler_core SHARED
   euler/common/server_meta.pb.cc
@@ -19,9 +19,6 @@ add_library(euler_core SHARED
   euler/core/framework/tensor_shape.pb.cc
   euler/core/framework/types.pb.cc
   euler/proto/worker.pb.cc
-
-  euler/parser/lex.yy.c
-  euler/parser/gremlin.tab.c
 
   euler/common/logging.cc
   euler/common/file_io.cc
@@ -41,12 +38,6 @@ add_library(euler_core SHARED
   euler/common/hdfs_file_io.cc
   euler/common/env.cc
   euler/common/data_types.cc
-  euler/parser/optimizer.cc
-  euler/parser/translator.cc
-  euler/parser/compiler.cc
-  euler/parser/gen_node_def_input_output.cc
-  euler/parser/attribute_calculator.cc
-  euler/parser/optimize_type.cc
   euler/core/index/index_manager.cc
   #euler/core/index/common_index_result.cc
   #euler/core/index/index_meta.cc
@@ -129,6 +120,8 @@ add_library(euler_core SHARED
   euler/service/server_interface.cc
   euler/service/python_api.cc
   #euler/util/python_api.cc
+
+  euler/parser/optimize_type.cc
   )
 
 target_link_libraries(euler_core
