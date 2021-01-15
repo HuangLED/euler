@@ -69,9 +69,9 @@ void GetSortedFullNeighbor::ComputeAsync(
   // Build Euler query
   auto query = new euler::Query(query_str_);
 
-  auto t_nodes = query->AllocInput("nodes", {nodes_size}, euler::kUInt64);
-  auto t_edge_types = query->AllocInput("edge_types",
-                                        {etypes_size}, euler::kInt32);
+  euler::Tensor* t_nodes = query->AllocInput("nodes", {nodes_size}, euler::kUInt64);
+  euler::Tensor* t_edge_types = query->AllocInput(
+      "edge_types", {etypes_size}, euler::kInt32);
   for (size_t i = 0; i < nodes_size; i++) {
     t_nodes->Raw<int64_t>()[i] = nodes_flat(i);
   }
@@ -81,14 +81,15 @@ void GetSortedFullNeighbor::ComputeAsync(
 
   auto callback =
       [ctx, done, nodes_size, query, this] () {
-        auto results_map = query->GetResult(res_names_);
+        std::unordered_map<std::string, euler::Tensor*> results_map = 
+            query->GetResult(res_names_);
         SparseTensorBuilder<int64, 2> id_builder;
         SparseTensorBuilder<float, 2> weight_builder;
         SparseTensorBuilder<int32, 2> type_builder;
-        auto id_idx = results_map["nb:0"];
-        auto id_val = results_map["nb:1"];
-        auto wei_val = results_map["nb:2"];
-        auto type_val = results_map["nb:3"];
+        euler::Tensor* id_idx = results_map["nb:0"];
+        euler::Tensor* id_val = results_map["nb:1"];
+        euler::Tensor* wei_val = results_map["nb:2"];
+        euler::Tensor* type_val = results_map["nb:3"];
 
         if (id_idx->NumElements() != nodes_size * 2) {
           EULER_LOG(FATAL) << "Sparse Feature Result Index Num Error:"
